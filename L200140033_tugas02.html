@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Include Google Maps JS API -->
+        <script type="text/javascript"
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgmqSHQg_5KAvV97-yoc5F02KIcOZRbOA&sensor=false">//Menggunakan Key google API Map Ghofar
+        </script>
+        <style type="text/css">
+			.align{
+			font-family:verdana;
+			text-align: center;
+			}
+			#mapDiv {
+			width: 800px;
+			height: 500px; 
+			}
+			.button {
+				background-color: #93228D ;
+				border: none;
+				color: white;
+				padding: 15px 32px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+				margin: 4px 2px;
+				cursor: pointer;
+			}
+        </style>
+        <!-- Map creation is here -->
+        <script type="text/javascript">
+            //Defining map as a global variable to access from other functions
+            var map;
+            function initMap () {
+				//Enabling new cartography and themes
+				google.maps.visualRefresh = true;
+
+				//Setting starting options of map
+				var mapOptions = {
+					  
+					  mapTypeId: google.maps.MapTypeId.ROADMAP,
+					  disableDefaultUI: true
+				};
+
+				//Getting map DOM element
+				var mapElement = document.getElementById('mapDiv');
+
+                //Creating a map with DOM element which is just obtained
+                map = new google.maps.Map(mapElement, mapOptions);
+					
+                startButtonEvents();
+            }
+
+            //Function that start listening the click events of the buttons.
+            function startButtonEvents () {
+                document.getElementById('btnRoad').addEventListener('click', function(){
+                    map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+                });
+                document.getElementById('btnSat').addEventListener('click', function(){
+                    map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+                });
+                document.getElementById('btnHyb').addEventListener('click', function(){
+                    map.setMapTypeId(google.maps.MapTypeId.HYBRID);
+                });
+                document.getElementById('btnTer').addEventListener('click', function(){
+                    map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
+                });
+            }
+
+            google.maps.event.addDomListener(window, 'load', initMap);
+			  
+			if (navigator.geolocation) {
+			//minta ijin kepada user, jika diijinkan 
+			//navigator.geolocation = True
+			 
+			//membaca posisi/lokasi client (browser) saat ini
+				navigator.geolocation.getCurrentPosition(
+				  // position adalah data lokasi hasil pembacaan 
+				  // berupa lokasi dalam json
+				 function(position) {
+				 
+						console.log(position);   //menulis di konsole
+				 
+						var lat = position.coords.latitude;
+						var lng = position.coords.longitude;
+				 
+				 // devCenter adalah data lokasi dengan format 
+				 // google.maps
+						var devCenter =  new google.maps.LatLng(lat, lng);
+				 
+				 // mengatur lokasi PUSAT peta (map) 
+						map.setCenter(devCenter);
+				 //mengatur Level ZOOM (18)
+						map.setZoom(18);	
+				console.log(latitude + " -- " + longitude);
+				});
+			}
+        </script>
+    </head>
+    <body>
+        <h1 class="align">Tugas 02 - Menampilkan Peta Berdasarkan Lokasi User</h1>
+		<center>
+			<input class="button" id="btnRoad" type="button" value="RoadMap">
+			<input class="button" id="btnSat" type="button" value="Satellite">
+			<input class="button" id="btnHyb" type="button" value="Hybrid">
+			<input class="button" id="btnTer" type="button" value="Terrain">
+			<br/>
+			<br/>
+			<br/>
+			<div id="mapDiv">
+			
+			</div>
+		</center>
+    </body>
+</html>
