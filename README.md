@@ -1,2 +1,3 @@
-# l200140033.github.io
-Upload Tugas GIS
+# Upload Tugas SI GEOGRAFIS ke server Github
+
+Tugas 02 - Peta Geolocation
