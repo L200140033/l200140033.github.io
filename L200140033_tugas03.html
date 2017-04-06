@@ -1,3 +1,710 @@
-# Upload Tugas SI GEOGRAFIS ke server Github
+<!DOCTYPE html>
+<html>
+    <head>
+	<title>Tugas03 SI Geografi</title>
+        <!-- Include Google Maps JS API -->
+       <script type="text/javascript"
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgmqSHQg_5KAvV97-yoc5F02KIcOZRbOA&sensor=false">//Menggunakan Key google API Map Ghofar
+        </script>
+        <style type="text/css">
+              html { height: 100% }
+              body { height: 100%; margin: 5; }
+              #mapDiv { width: 800px; height: 500px; }
+        </style>
+        <!-- Map creation is here -->
+        <script type="text/javascript">
+				//Defining map as a global variable to access from other functions
+				var map;
 
-Tugas 02 - Peta Geolocation
+				var fki = [
+					[ -7.556638838822166, 110.77082309871912],
+					[ -7.556700658590594, 110.77118519693613],
+					[ -7.556923342629321, 110.77112350612879],
+					[ -7.556866175991528, 110.7707759924233],
+					[ -7.556776770013765, 110.77078940346837],
+					[ -7.5567744434639055, 110.77076526358724],
+					[ -7.556710297155833, 110.77077565714717],
+					[ -7.556714950256228, 110.77081052586436]
+				];
+
+              function addPolygon () {
+                  //First we iterate over the coordinates array to create a
+                  // new array which includes objects of LatLng class.
+                  var pointCount = fki.length;
+                  var areaPath = [];
+                  for (var i=0; i < pointCount; i++) {
+                      var tempLatLng = new google.maps.LatLng(fki[i][0], fki[i][1]);
+                      areaPath.push(tempLatLng);
+                  }
+
+                  //Polygon properties are defined below
+                  var polygonOptions = {
+                      paths: areaPath,
+                      strokeColor: '#FF0000',
+                      strokeOpacity: 0.8,
+                      strokeWeight: 2,
+                      fillColor: '#00FF00',
+                      fillOpacity: 0.4
+                  }
+
+                  var polygon = new google.maps.Polygon(polygonOptions);
+
+                  //Polygon is set to current map.
+                  polygon.setMap(map);
+              }
+			
+				var ft = [
+					[ -7.556700658590594, 110.77118519693613],
+					[ -7.556746524864671, 110.77146699652076],
+					[ -7.556817318452067, 110.77145559713244],
+					[ -7.556819645001698, 110.77147571370006],
+					[ -7.556888776756208, 110.77146364375949],
+					[ -7.5568857854786, 110.77144855633378],
+					[ -7.556975523797902, 110.77143296599388],
+					[ -7.556923342629321, 110.77112350612879],
+				];
+				function p_ft () {
+                  //First we iterate over the coordinates array to create a
+                  // new array which includes objects of LatLng class.
+                  var pointCount = ft.length;
+                  var areaPath = [];
+                  for (var i=0; i < pointCount; i++) {
+                      var tempLatLng = new google.maps.LatLng(ft[i][0], ft[i][1]);
+                      areaPath.push(tempLatLng);
+                  }
+
+                  //Polygon properties are defined below
+                  var polygonOptions = {
+                      paths: areaPath,
+                      strokeColor: '#FF0000',
+                      strokeOpacity: 0.8,
+                      strokeWeight: 2,
+                      fillColor: '#00FF00',
+                      fillOpacity: 0.4
+                  }
+
+                  var polygon = new google.maps.Polygon(polygonOptions);
+
+                  //Polygon is set to current map.
+                  polygon.setMap(map);
+              }
+			  var feb = [
+					[ -7.556460691483017, 110.76980486512184],
+					[ -7.556481962810965, 110.7699416577816],
+					[ -7.556511875614103, 110.76995439827442],
+					[ -7.55663219153471, 110.77073089778423],
+					[ -7.557013413304909, 110.77067121863365],
+					[ -7.556892432762148, 110.7698930427432],
+					[ -7.556874152732137, 110.76988030225038],
+					[ -7.556854875608743, 110.76974853873253],
+					[ -7.556698332040326, 110.76977301388979],
+					[ -7.55669500839707, 110.76974853873253],
+					[ -7.556672739986589, 110.76975222676992],
+					[ -7.5566700810718315, 110.76974250376224],
+					[ -7.556600284553507, 110.7697532325983],
+					[ -7.556604272926292, 110.76978206634521],
+			
+				];
+				function p_feb () {
+                  //First we iterate over the coordinates array to create a
+                  // new array which includes objects of LatLng class.
+                  var pointCount = feb.length;
+                  var areaPath = [];
+                  for (var i=0; i < pointCount; i++) {
+                      var tempLatLng = new google.maps.LatLng(feb[i][0], feb[i][1]);
+                      areaPath.push(tempLatLng);
+                  }
+
+                  //Polygon properties are defined below
+                  var polygonOptions = {
+                      paths: areaPath,
+                      strokeColor: '#FF0000',
+                      strokeOpacity: 0.8,
+                      strokeWeight: 2,
+                      fillColor: '#00FF00',
+                      fillOpacity: 0.4
+                  }
+
+                  var polygon = new google.maps.Polygon(polygonOptions);
+
+                  //Polygon is set to current map.
+                  polygon.setMap(map);
+              }
+			  
+			  var ft1 = [
+					[ -7.555745923320846, 110.77088948226947],
+					[ -7.555915613347191, 110.77085964381695],
+					[ 	-7.555895006721239, 	110.77074682340026],
+					[ -7.555810586017591, 110.7707604020834],
+					[ -7.555686946217107, 110.76995976269245],
+					[ -7.555748101391663, 110.76994903385639],
+					[ -7.5557308184084215, 110.76984543353319],
+					[-7.555586239579266, 110.76986907050014],
+					[-7.555604852028956, 110.76998641714454],
+					[-7.5555732773370545, 110.76999144628644],
+					[-7.555683954931166, 110.77069284394383],
+					[-7.555714200154659, 110.7706874795258],
+					
+				];
+				function p_ft1 () {
+                  //First we iterate over the coordinates array to create a
+                  // new array which includes objects of LatLng class.
+                  var pointCount = ft1.length;
+                  var areaPath = [];
+                  for (var i=0; i < pointCount; i++) {
+                      var tempLatLng = new google.maps.LatLng(ft1[i][0], ft1[i][1]);
+                      areaPath.push(tempLatLng);
+                  }
+
+                  //Polygon properties are defined below
+                  var polygonOptions = {
+                      paths: areaPath,
+                      strokeColor: '#FF0000',
+                      strokeOpacity: 0.8,
+                      strokeWeight: 2,
+                      fillColor: '#00FF00',
+                      fillOpacity: 0.4
+                  }
+				  
+				  
+
+                  var polygon = new google.maps.Polygon(polygonOptions);
+
+                  //Polygon is set to current map.
+                  polygon.setMap(map);
+              }
+			  
+			  var ft2 = [
+					[ -7.555246489273359, 110.77002949194934],
+					[ -7.5554057652487705, 110.77092904597521],
+					[ -7.555641079830514, 	110.77088613063097],
+					[ -7.5554808798043265, 	110.76998692005873],
+					
+					
+				];
+				function p_ft2 () {
+                  //First we iterate over the coordinates array to create a
+                  // new array which includes objects of LatLng class.
+                  var pointCount = ft2.length;
+                  var areaPath = [];
+                  for (var i=0; i < pointCount; i++) {
+                      var tempLatLng = new google.maps.LatLng(ft2[i][0], ft2[i][1]);
+                      areaPath.push(tempLatLng);
+                  }
+
+                  //Polygon properties are defined below
+                  var polygonOptions = {
+                      paths: areaPath,
+                      strokeColor: '#FF0000',
+                      strokeOpacity: 0.8,
+                      strokeWeight: 2,
+                      fillColor: '#00FF00',
+                      fillOpacity: 0.4
+                  }
+
+                  var polygon = new google.maps.Polygon(polygonOptions);
+
+                  //Polygon is set to current map.
+                  polygon.setMap(map);
+              }
+  
+					var fp = [
+						[-7.55507656625772,110.77183300478237],[-7.5550462122909865,110.77183918655123],[-7.555055518527562,110.77189450711217],
+						[-7.555085737750847,110.77188985673956],[-7.555097064224117,110.77195787430014],[-7.5551379451856345,110.77195016294922],
+						[-7.555130633144019,110.77191093564238],[-7.5551434624350495,110.77190583945139],[-7.555155959400773,110.77194499968869],
+						[-7.5552363918469885,110.77193091809136],[-7.555227750345222,110.77189940213543],[-7.555276940429892,110.77189001440388],
+						[-7.555285581930678,110.77193091809136],[-7.555358037584288,110.77192085980755],[-7.555350725546415,110.77188062667233],
+						[-7.555397256694496,110.77187258004528],[-7.555406562923501,110.77190811931473],[-7.555490983706116,110.77189537883214],
+						[-7.5554830069399594,110.77183704078607],[-7.555500217420943,110.77183389528045],[-7.5555128473001,110.7718969271923],
+						[-7.555596603331609,110.77188217504272],[-7.555588687039858,110.77182712875583],[-7.555611369784136,110.77182817085395],
+						[-7.555678969454564,110.77217586928839],[-7.555731483138562,110.77217292040586],[-7.55574113885764,110.77219668007695],
+						[-7.555808622040928,110.77218563042834],[-7.555803636566909,110.77215713195756],[-7.555837537808428,110.77215109697704],
+						[-7.555828896318685,110.77210918746118],[-7.555812278058548,110.77211086384432],[-7.555806960208282,110.77208504758005],
+						[-7.555843520357855,110.77207867733364],[-7.555804966038486,110.77185907147054],[-7.555820617399542,110.77185669405958],
+						[-7.555810646449441,110.77176214620977],[-7.555705026886427,110.77167409658841],[-7.555595346393231,110.77169555426053],
+						[-7.555598138253571,110.77173686027322],[-7.555582650029233,110.77174296229771],[-7.555579658742568,110.77173357456616],
+						[-7.555565367039377,110.77173525094679],[-7.555556393178985,110.77168563008513],[-7.5554744983669195,110.77170333267077],
+						[-7.555484991384867,110.77175431559874],[-7.5554617355526865,110.77175053954534],[-7.555451099863733,110.77170360088758],
+						[-7.5554517645942925,110.77170561254434],[-7.5553733263903915,110.7717176824849],[-7.555380638427896,110.77176395059041],
+						[-7.555337430931749,110.77177333832196],[-7.555326795239727,110.77172707021134],[-7.555245698079467, 110.77173914015702],
+						[-7.555256563410729,110.77178765765552],[-7.555212691171248,110.77179402790193],[-7.555204351818513,110.77174628153443],
+						[-7.555122589904181, 110.77175851911306],[-7.555132228504649,110.77181266620755],[-7.55511002044555,110.7718144492651],
+						[-7.555103445646817,110.77178540826253],[-7.555069544359218, 110.77179144323281] 
+						];
+
+				function p_fp () {
+                  //First we iterate over the coordinates array to create a
+                  // new array which includes objects of LatLng class.
+                  var pointCount = fp.length;
+                  var areaPath = [];
+                  for (var i=0; i < pointCount; i++) {
+                      var tempLatLng = new google.maps.LatLng(fp[i][0], fp[i][1]);
+                      areaPath.push(tempLatLng);
+                  }
+
+                  //Polygon properties are defined below
+                  var polygonOptions = {
+                      paths: areaPath,
+                      strokeColor: '#FF0000',
+                      strokeOpacity: 0.8,
+                      strokeWeight: 2,
+                      fillColor: '#00FF00',
+                      fillOpacity: 0.4
+                  }
+		
+                  var polygon = new google.maps.Polygon(polygonOptions);
+
+                  //Polygon is set to current map.
+                  polygon.setMap(map);
+              }
+			  
+			  
+				var perpus = [
+					[-7.555932231593205,  110.77079694718122],
+					[-7.555988733624874,  110.77079694718122],
+					[-7.555992722003296,  110.77082980424166],
+					[-7.556228036265279,  110.77079828828573],
+					[-7.556222718430267,  110.77075067907572],		
+					[-7.5562606080033135,  110.77074464410543],		
+					[-7.556228036265279,  110.77050810679793],		
+					[-7.556188152501086,  110.77051347121596],		
+					[-7.556182169936139,  110.77046787366271],		
+					[-7.556076810306551,  110.77048128470778],		
+					[-7.556082792872962,  110.77052352949977],		
+					[-7.556054209499379,  110.77052755281329],		
+					[-7.556054209499379,  110.77052721753716],		
+					[-7.556048226932574,  110.77048664912581],		
+					[-7.555942534905417,  110.7705014012754],		
+					[-7.55594951456838,  110.77055471017957],		
+					[-7.555900324560286, 110.77056074514985],		
+				];
+				function p_perpus() {
+                  //First we iterate over the coordinates array to create a
+                  // new array which includes objects of LatLng class.
+                  var pointCount = perpus.length;
+                  var areaPath = [];
+                  for (var i=0; i < pointCount; i++) {
+                      var tempLatLng = new google.maps.LatLng(perpus[i][0], perpus[i][1]);
+                      areaPath.push(tempLatLng);
+                  }
+
+                  //Polygon properties are defined below
+                  var polygonOptions = {
+                      paths: areaPath,
+                      strokeColor: '#FF0000',
+                      strokeOpacity: 0.8,
+                      strokeWeight: 2,
+                      fillColor: '#00FF00',
+                      fillOpacity: 0.4
+                  }
+
+                  var polygon = new google.maps.Polygon(polygonOptions);
+
+                  //Polygon is set to current map.
+                  polygon.setMap(map);
+              }
+			 
+				var perpus = [
+					[-7.555932231593205,  110.77079694718122],
+					[-7.555988733624874,  110.77079694718122],
+					[-7.555992722003296,  110.77082980424166],
+					[-7.556228036265279,  110.77079828828573],
+					[-7.556222718430267,  110.77075067907572],		
+					[-7.5562606080033135,  110.77074464410543],		
+					[-7.556228036265279,  110.77050810679793],		
+					[-7.556188152501086,  110.77051347121596],		
+					[-7.556182169936139,  110.77046787366271],		
+					[-7.556076810306551,  110.77048128470778],		
+					[-7.556082792872962,  110.77052352949977],		
+					[-7.556054209499379,  110.77052755281329],		
+					[-7.556054209499379,  110.77052721753716],		
+					[-7.556048226932574,  110.77048664912581],		
+					[-7.555942534905417,  110.7705014012754],		
+					[-7.55594951456838,  110.77055471017957],		
+					[-7.555900324560286, 110.77056074514985],		
+				];
+				function p_perpus() {
+                  //First we iterate over the coordinates array to create a
+                  // new array which includes objects of LatLng class.
+                  var pointCount = perpus.length;
+                  var areaPath = [];
+                  for (var i=0; i < pointCount; i++) {
+                      var tempLatLng = new google.maps.LatLng(perpus[i][0], perpus[i][1]);
+                      areaPath.push(tempLatLng);
+                  }
+
+                  //Polygon properties are defined below
+                  var polygonOptions = {
+                      paths: areaPath,
+                      strokeColor: '#FF0000',
+                      strokeOpacity: 0.8,
+                      strokeWeight: 2,
+                      fillColor: '#00FF00',
+                      fillOpacity: 0.4
+                  }
+
+                  var polygon = new google.maps.Polygon(polygonOptions);
+
+                  //Polygon is set to current map.
+                  polygon.setMap(map);
+              }	
+
+			var gor = [
+					[-7.5559913925438185,  110.77003084123135],
+					[-7.5560392530822185,  110.77033795416355],
+					[-7.556172198994385,  110.77031649649143],
+					[-7.556180175747805,  110.77040132135153],
+
+					[-7.556338381327031,  110.77037416398525],
+					[-7.556338381327031,  110.77037550508976],
+					[-7.55632508674277,  110.77028699219227],
+					[-7.556444737986378,  110.77026687562466],
+					[-7.556402195325786,  110.76999094337225],
+					[-7.556279885153236,  110.77001072466373],
+					[-7.556262602191266,  110.76989656314254],
+					[-7.556096752194257,  110.76992405578494],
+					[-7.5561097144207565,  110.77000686898828],	
+				];
+				function p_gor() {
+                  //First we iterate over the coordinates array to create a
+                  // new array which includes objects of LatLng class.
+                  var pointCount = gor.length;
+                  var areaPath = [];
+                  for (var i=0; i < pointCount; i++) {
+                      var tempLatLng = new google.maps.LatLng(gor[i][0], gor[i][1]);
+                      areaPath.push(tempLatLng);
+                  }
+
+                  //Polygon properties are defined below
+                  var polygonOptions = {
+                      paths: areaPath,
+                      strokeColor: '#FF0000',
+                      strokeOpacity: 0.8,
+                      strokeWeight: 2,
+                      fillColor: '#00FF00',
+                      fillOpacity: 0.4
+                  }
+
+                  var polygon = new google.maps.Polygon(polygonOptions);
+
+                  //Polygon is set to current map.
+                  polygon.setMap(map);
+              }		
+			  
+			  var fh = [
+					[ -7.557187904412667,  110.76871370896697],
+					[ -7.556924672085923,  110.76875578612089],
+					[ -7.556890770941271,  110.76856199651957],
+					[ -7.55696920887976,  110.76854456216097],
+					[ -7.556935307738607,  110.76832680031657],
+					[ -7.556969541243871,  110.76832009479403],
+					[ -7.556956246679038,  110.76823895797133],
+					[ -7.557263683386083,  110.76818631961942],
+					[ -7.557271992483233,  110.76823459938169], 
+					[ -7.557398623104049,  110.76821314170957],
+					[ -7.5574072645623955,  110.7682441547513],
+					[ -7.557650554779938,  110.76820861548185],
+					[ -7.557675149685026,  	110.76834876090288],
+					[ -7.5576915454759215,  110.76834683957725],
+					[ -7.5577063847359,  110.76844135173076],
+					[ 	-7.557691103136208,  	110.76844397932291],
+					[ -7.557719362331069,  110.76860495755409],
+					[ -7.5575485952794965,  110.76863306091082],
+					[ -7.557518274050238,  110.76843928545713],
+					[ -7.557440500938983,  110.76845269650221],
+					[ -7.557446483486502,  110.76849091798067],
+					[ -7.557251718285892,  110.76852310448885],
+					[ -7.557245071007879,  110.76849225908518],
+					[ -7.557156662200455,  110.76850969344378],
+				];
+				function p_fh() {
+                  //First we iterate over the coordinates array to create a
+                  // new array which includes objects of LatLng class.
+                  var pointCount = fh.length;
+                  var areaPath = [];
+                  for (var i=0; i < pointCount; i++) {
+                      var tempLatLng = new google.maps.LatLng(fh[i][0], fh[i][1]);
+                      areaPath.push(tempLatLng);
+                  }
+
+                  //Polygon properties are defined below
+                  var polygonOptions = {
+                      paths: areaPath,
+                      strokeColor: '#FF0000',
+                      strokeOpacity: 0.8,
+                      strokeWeight: 2,
+                      fillColor: '#00FF00',
+                      fillOpacity: 0.4
+                  }
+
+                  var polygon = new google.maps.Polygon(polygonOptions);
+
+                  //Polygon is set to current map.
+                  polygon.setMap(map);
+              }
+			  
+			  var paud = [
+					[-7.557985870737221,110.76914024725454],
+					[-7.558119148413389, 110.76911610737852],
+					[-7.5579898590972086,110.76841739190968],
+					[ -7.557972614980079,  110.76832981780171],
+					[ -7.557880882687473,  110.76834624633193],
+					[ -7.557897642582632,  110.76843462764941],
+					[ -7.557856075384981,  110.76844256336722],
+				];
+				function p_fpaud() {
+                  //First we iterate over the coordinates array to create a
+                  // new array which includes objects of LatLng class.
+                  var pointCount = paud.length;
+                  var areaPath = [];
+                  for (var i=0; i < pointCount; i++) {
+                      var tempLatLng = new google.maps.LatLng(paud[i][0], paud[i][1]);
+                      areaPath.push(tempLatLng);
+                  }
+
+                  //Polygon properties are defined below
+                  var polygonOptions = {
+                      paths: areaPath,
+                      strokeColor: '#FF0000',
+                      strokeOpacity: 0.8,
+                      strokeWeight: 2,
+                      fillColor: '#00FF00',
+                      fillOpacity: 0.4
+                  }
+
+                  var polygon = new google.maps.Polygon(polygonOptions);
+
+                  //Polygon is set to current map.
+                  polygon.setMap(map);
+              }
+			  
+			  var kesmas = [ [ -7.559037173457653,  110.76884446665645],
+[ -7.559071074433812,  110.76883809641004],
+            [ -7.559082042396104,  110.76889174059033],
+			[ -7.559159248613498, 110.76887536465495],
+                        [ -7.559147850164059,  110.76882401481271],
+			[ -7.55925924942183,  110.76880257747098],
+            [ -7.5591395411030025,  110.7681574858725],
+			[ -7.559042269655953,  110.7681736797258],
+            [ -7.5590396107557885,  110.76816160978524],
+			[ -7.558977126597057,  110.7681736797258],
+            [ -7.558977519497847,  110.76817542749245],
+			[ -7.558978608699013,  110.76818824623456],
+            [ -7.5589294104337394,  110.76819667965992],
+			[ -7.558932734059796,  110.7682201489888],
+            [ -7.558919439555406,  110.76822484285458],
+			[ -7.558967964494454,  110.76847898214851], 
+            [ -7.558951091555294,  110.76848236843944],
+			[ -7.558958071169634,  110.76851723715663],
+            [ -7.558973204743041,  110.76851566135474]
+			]
+			
+			
+				function p_fkesmas() {
+                  //First we iterate over the coordinates array to create a
+                  // new array which includes objects of LatLng class.
+                  var pointCount = kesmas.length;
+                  var areaPath = [];
+                  for (var i=0; i < pointCount; i++) {
+                      var tempLatLng = new google.maps.LatLng(kesmas[i][0], kesmas[i][1]);
+                      areaPath.push(tempLatLng);
+                  }
+
+                  //Polygon properties are defined below
+                  var polygonOptions = {
+                      paths: areaPath,
+                      strokeColor: '#FF0000',
+                      strokeOpacity: 0.8,
+                      strokeWeight: 2,
+                      fillColor: '#00FF00',
+                      fillOpacity: 0.4
+                  }
+
+                  var polygon = new google.maps.Polygon(polygonOptions);
+
+                  //Polygon is set to current map.
+                  polygon.setMap(map);
+              }
+				var farmasi =[ [ -7.557967551977087,  110.76716738195046],
+								[ -7.55801275339,  110.76715933532341],
+								[ -7.5580180712029765,  110.76718079299553],
+								[ -7.558085873312619,  110.767174087473],
+								[   -7.558083214406563,  110.76715531200989],
+								[ -7.558141045609679,  110.76714525372608],
+								[   -7.558147028147491,  110.76716201753243],
+								[ -7.558145698694654,  110.76716201753243],
+								[ -7.5582367662047165,  110.76715061814411],
+								[-7.558319905309809,  110.76769947715229],
+								[   -7.558062530331256,   110.767732456261],
+								[   -7.558037270721664,   110.76757018269745],
+								[ -7.557998539320103,   110.76757645234466],
+								[ -7.557976115871245,   110.76741059126107],
+								[ -7.558008079087888,   110.76740931319227]
+								]
+			
+			
+				function p_farmasi() {
+                  //First we iterate over the coordinates array to create a
+                  // new array which includes objects of LatLng class.
+                  var pointCount = farmasi.length;
+                  var areaPath = [];
+                  for (var i=0; i < pointCount; i++) {
+                      var tempLatLng = new google.maps.LatLng(farmasi[i][0], farmasi[i][1]);
+                      areaPath.push(tempLatLng);
+                  }
+
+                  //Polygon properties are defined below
+                  var polygonOptions = {
+                      paths: areaPath,
+                      strokeColor: '#FF0000',
+                      strokeOpacity: 0.8,
+                      strokeWeight: 2,
+                      fillColor: '#00FF00',
+                      fillOpacity: 0.4
+                  }
+
+                  var polygon = new google.maps.Polygon(polygonOptions);
+
+                  //Polygon is set to current map.
+                  polygon.setMap(map);
+              }
+			  
+			  var fai = [ [-7.558882214940925, 110.76909656077419],
+[-7.559004524376441,110.76907510310207],
+[-7.558995218224951,110.76902145892177],
+[-7.559005853826632,110.76901743560825],
+[-7.558867590984373,110.76826708760564],
+[-7.5587532582159715,110.76828854527776],
+[-7.5587685469018755,110.76835895330532],
+[-7.558760570196251,110.76836230606659],
+[-7.558886203292644,110.76904023438487],
+[ -7.5588709146109,  110.76904358714614]
+]
+			
+			
+				function p_fai() {
+                  //First we iterate over the coordinates array to create a
+                  // new array which includes objects of LatLng class.
+                  var pointCount = fai.length;
+                  var areaPath = [];
+                  for (var i=0; i < pointCount; i++) {
+                      var tempLatLng = new google.maps.LatLng(fai[i][0], fai[i][1]);
+                      areaPath.push(tempLatLng);
+                  }
+
+                  //Polygon properties are defined below
+                  var polygonOptions = {
+                      paths: areaPath,
+                      strokeColor: '#FF0000',
+                      strokeOpacity: 0.8,
+                      strokeWeight: 2,
+                      fillColor: '#00FF00',
+                      fillOpacity: 0.4
+                  }
+
+                  var polygon = new google.maps.Polygon(polygonOptions);
+
+                  //Polygon is set to current map.
+                  polygon.setMap(map);
+              }
+			  
+			 var fkip = [ [-7.557816736543748,110.76816368848085],[-7.558260109176665,110.76808640733361],
+            [-7.55826106748966,110.76807675138014],[-7.558395674522815,110.76805227622287],
+            [-7.558400659968058,110.76807306334274],[-7.55843123736428,110.76806803420084],
+            [-7.558426916645374,110.76804791763323],[-7.558794509960307,110.76798522100262],
+            [-7.5587965041365655,110.76799159124903],[-7.558836720022547,110.76798555627875],
+            [-7.558848020353464,110.76805294678024],[-7.558828410955498,110.76805697009377],
+            [-7.558836055297179,110.76810625568442],[-7.558409966142499,110.76818068697946],
+            [-7.558414286861569,110.76820180937546],[-7.55828599472307,110.76822494342821],
+            [-7.558282006365817,110.76820382103222],[-7.557900785705328,110.7682685293247],
+            [-7.557904441702695,110.76829065754907],[-7.5578632286396047,110.76829736307161],
+            [-7.557857578461297,110.76827624067562],[ -7.557837304291462,   110.76827892288463]
+]
+			
+			
+				function p_fkip() {
+                  //First we iterate over the coordinates array to create a
+                  // new array which includes objects of LatLng class.
+                  var pointCount = fkip.length;
+                  var areaPath = [];
+                  for (var i=0; i < pointCount; i++) {
+                      var tempLatLng = new google.maps.LatLng(fkip[i][0], fkip[i][1]);
+                      areaPath.push(tempLatLng);
+                  }
+
+                  //Polygon properties are defined below
+                  var polygonOptions = {
+                      paths: areaPath,
+                      strokeColor: '#FF0000',
+                      strokeOpacity: 0.8,
+                      strokeWeight: 2,
+                      fillColor: '#00FF00',
+                      fillOpacity: 0.4
+                  }
+
+                  var polygon = new google.maps.Polygon(polygonOptions);
+
+                  //Polygon is set to current map.
+                  polygon.setMap(map);
+              }
+			
+			  function initMap(){
+				var LAT = -7.556914036432985;
+				var LNG = 110.7698866724968;
+
+				//tempel_info(LAT,LNG); 
+
+				map = new google.maps.Map(document.getElementById('mapDiv'), {
+				  center: {lat: LAT, lng: LNG},
+				  zoom: 17,
+                  mapTypeId: google.maps.MapTypeId.ROADMAP
+				  
+				  
+				});
+ 
+ 
+                    addPolygon();
+                    p_ft();
+					p_feb();
+					p_ft1();
+					p_ft2();
+					p_fp();
+					p_perpus();
+					p_gor();
+					p_fh();
+					p_fpaud();
+					p_fkesmas();
+					p_farmasi();
+					p_fai();
+					p_fkip();
+					
+				google.maps.event.addListener(map, 'mousemove',  function(e) {                    	
+                    	if 	( ( e.latLng.lat() < -7.556640168279646  ) && 
+                    	      ( e.latLng.lat() > -7.5569571108582245 ) && 
+                    	      ( e.latLng.lng() < 110.77146649360657  ) && 
+                    	      ( e.latLng.lng() > 110.77076375484467  ) ) { 							
+				document.getElementById('info').innerHTML = 'Fakultas Informatika';
+                    	}  else {
+				document.getElementById('info').innerHTML = '<b>Latitude: </b>' + e.latLng.lat() + '<br><b>Longitude: </b>' + e.latLng.lng();
+			}
+                    });
+             
+					
+					
+              }
+
+              google.maps.event.addDomListener(window, 'load', initMap);
+        </script>
+    </head>
+    <body>
+        <b>Chapter 3 - Adding Polygons</b><br/>
+	<div class="container">
+    <div class="row">
+        <div class="col-md-8" id="mapDiv"></div>
+        <div class="col-md-4" id="info"></div>
+	</div>
+	</div>
+		
+		
+    </body>
+</html>
