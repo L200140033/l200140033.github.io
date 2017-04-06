@@ -3,19 +3,20 @@
     <head>
 	<title>Tugas03 SI Geografi</title>
         <!-- Include Google Maps JS API -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
        <script type="text/javascript"
           src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgmqSHQg_5KAvV97-yoc5F02KIcOZRbOA&sensor=false">//Menggunakan Key google API Map Ghofar
         </script>
         <style type="text/css">
               html { height: 100% }
               body { height: 100%; margin: 5; }
-              #mapDiv { width: 800px; height: 500px; }
+              #mapDiv { width: 700px; height: 500px; }
         </style>
         <!-- Map creation is here -->
         <script type="text/javascript">
 				//Defining map as a global variable to access from other functions
-				var map;
-
+				var map, info_peta;
+				info_peta = new google.maps.InfoWindow;
 				var fki = [
 					[ -7.556638838822166, 110.77082309871912],
 					[ -7.556700658590594, 110.77118519693613],
@@ -52,6 +53,15 @@
                   //Polygon is set to current map.
                   polygon.setMap(map);
               }
+			  fki_shp.setMap(map);
+			  fki_shp.addListener('click', function(e) {
+				var konten = "<strong>Fakultas Komunikasi & Informatika</strong><br><ul><li>Informatika</li><li>Komunikasi</li></ul>";
+				info_peta.setContent(konten);
+				info_peta.setPosition(e.latLng);
+				info_peta.open(map);
+				infowindow (e.latLng.lat(),e.latLng.lng());
+				document.getElementById("info").innerHTML  = konten;
+			  });
 			
 				var ft = [
 					[ -7.556700658590594, 110.77118519693613],
@@ -647,6 +657,43 @@
                   //Polygon is set to current map.
                   polygon.setMap(map);
               }
+			  
+			  var fk = [ 
+			  [-7.5482030163917715,110.76934469863772],
+			  
+			[-7.54827248189556,110.7693218998611],
+			[-7.548289432806259,110.76937118545175],
+			[-7.54822395575533,110.76940705999732],
+			
+            
+]
+			
+			
+				function p_fk() {
+                  //First we iterate over the coordinates array to create a
+                  // new array which includes objects of LatLng class.
+                  var pointCount = fk.length;
+                  var areaPath = [];
+                  for (var i=0; i < pointCount; i++) {
+                      var tempLatLng = new google.maps.LatLng(fk[i][0], fk[i][1]);
+                      areaPath.push(tempLatLng);
+                  }
+
+                  //Polygon properties are defined below
+                  var polygonOptions = {
+                      paths: areaPath,
+                      strokeColor: '#FF0000',
+                      strokeOpacity: 0.8,
+                      strokeWeight: 2,
+                      fillColor: '#00FF00',
+                      fillOpacity: 0.4
+                  }
+
+                  var polygon = new google.maps.Polygon(polygonOptions);
+
+                  //Polygon is set to current map.
+                  polygon.setMap(map);
+              }
 			
 			  function initMap(){
 				var LAT = -7.556914036432985;
@@ -677,6 +724,7 @@
 					p_farmasi();
 					p_fai();
 					p_fkip();
+					p_fk();
 					
 				google.maps.event.addListener(map, 'mousemove',  function(e) {                    	
                     	if 	( ( e.latLng.lat() < -7.556640168279646  ) && 
@@ -697,12 +745,16 @@
         </script>
     </head>
     <body>
-        <b>Chapter 3 - Adding Polygons</b><br/>
+        <b>TUGAS 03 SISTEM INFORMASI GEOGRAFIS</b><br/><br/>
 	<div class="container">
-    <div class="row">
-        <div class="col-md-8" id="mapDiv"></div>
-        <div class="col-md-4" id="info"></div>
-	</div>
+		<div class="row">
+			<div class="col-md-6" id="mapDiv">
+
+			</div>
+			<div class="col-md-4 info">
+				Hallo
+			</div>
+		</div>
 	</div>
 		
 		
