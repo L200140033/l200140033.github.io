@@ -15,8 +15,8 @@
         <!-- Map creation is here -->
         <script type="text/javascript">
 				//Defining map as a global variable to access from other functions
-				var map, info_peta;
-				info_peta = new google.maps.InfoWindow;
+				var map;
+
 				var fki = [
 					[ -7.556638838822166, 110.77082309871912],
 					[ -7.556700658590594, 110.77118519693613],
@@ -53,15 +53,7 @@
                   //Polygon is set to current map.
                   polygon.setMap(map);
               }
-			  fki_shp.setMap(map);
-			  fki_shp.addListener('click', function(e) {
-				var konten = "<strong>Fakultas Komunikasi & Informatika</strong><br><ul><li>Informatika</li><li>Komunikasi</li></ul>";
-				info_peta.setContent(konten);
-				info_peta.setPosition(e.latLng);
-				info_peta.open(map);
-				infowindow (e.latLng.lat(),e.latLng.lng());
-				document.getElementById("info").innerHTML  = konten;
-			  });
+			  
 			
 				var ft = [
 					[ -7.556700658590594, 110.77118519693613],
@@ -751,7 +743,7 @@
 			<div class="col-md-6" id="mapDiv">
 
 			</div>
-			<div class="col-md-4 info">
+			<div class="col-md-4">
 				Hallo
 			</div>
 		</div>
